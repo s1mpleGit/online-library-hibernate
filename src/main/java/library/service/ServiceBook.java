@@ -18,9 +18,10 @@ public class ServiceBook {
 
     public boolean deleteBook(int id) {
         if (id > 0) {
-                bookDao.delete(id);
-                return true;
-            }
+
+            bookDao.delete(id);
+            return true;
+        }
         throw new RuntimeException("Failed to delete book with ID = " + id);
     }
 
@@ -33,7 +34,7 @@ public class ServiceBook {
 
         if (title != null && author != null && description != null && imageUri != null) {
             if (!title.trim().isEmpty() && !description.trim().isEmpty() && !imageUri.trim().isEmpty()) {
-                if (title.length() <=20) {
+                if (title.length() <= 20) {
                     List<Book> books = bookDao.readAll();
                     long check = books.stream()
                             .filter(b -> b.getTitle().equalsIgnoreCase(title) && b.getAuthor().equals(author))
@@ -43,9 +44,12 @@ public class ServiceBook {
                     } else {
                         return null;
                     }
-                } return null;
-            } return null;
-        } return null;
+                }
+                return null;
+            }
+            return null;
+        }
+        return null;
 
     }
 
@@ -61,9 +65,12 @@ public class ServiceBook {
             if (!title.trim().isEmpty() && !description.trim().isEmpty() && !imageUri.trim().isEmpty()) {
                 if (title.length() <= 20) {
                     return bookDao.update(book);
-                } return null;
-            } return null;
-        } return null;
+                }
+                return null;
+            }
+            return null;
+        }
+        return null;
     }
 
     public Book getBookInfo(int id) {
@@ -71,7 +78,9 @@ public class ServiceBook {
             Book book = bookDao.read(id);
             if (book != null) {
                 return book;
-            } throw new RuntimeException("Book with ID = " + id + " not exist");
-        } throw new RuntimeException("Book with ID = " + id + " not exist");
+            }
+            throw new RuntimeException("Book with ID = " + id + " not exist");
+        }
+        throw new RuntimeException("Book with ID = " + id + " not exist");
     }
 }

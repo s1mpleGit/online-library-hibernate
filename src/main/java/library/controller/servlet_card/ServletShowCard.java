@@ -27,13 +27,13 @@ public class ServletShowCard extends HttpServlet {
         User user = (User) request.getSession().getAttribute("user");
         if (user != null) {
         ServiceUser userService = new ServiceUser();
-        request.setAttribute("userBooks", userService.getUserBooksByUserId(user.getId()));
+        request.setAttribute("userBooks", userService.getUserBooks());
         if (user.getRole().toString().equalsIgnoreCase("ADMIN")) {
-            ServiceBook bookService = new ServiceBook();
-            request.setAttribute("books", bookService.getAllBooks());
-            request.setAttribute("users", userService.showAllUsers());
-            ServiceAuthor authorService = new ServiceAuthor();
-            request.setAttribute("authors", authorService.getAllAuthors());
+//            ServiceBook bookService = new ServiceBook();
+//            request.setAttribute("books", bookService.getAllBooks());
+//            request.setAttribute("users", userService.showAllUsers());
+//            ServiceAuthor authorService = new ServiceAuthor();
+//            request.setAttribute("authors", authorService.getAllAuthors());
         }
         getServletContext().getRequestDispatcher("/card.jsp").forward(request, response);
         } else {

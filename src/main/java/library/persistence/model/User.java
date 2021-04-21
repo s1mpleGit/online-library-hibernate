@@ -13,8 +13,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@EqualsAndHashCode(exclude = {"role", "status", "books"})
-@ToString(exclude = {"role", "status", "books"})
+@EqualsAndHashCode(exclude = {"role", "status", "userBooks"})
+@ToString(exclude = {"role", "status", "userBooks"})
 
 @Entity
 @Table(name = "USERS")
@@ -39,7 +39,6 @@ public class User {
         this.surname = surname;
         this.email = email;
         this.phone = phone;
-
         this.message = message;
     }
 
@@ -53,16 +52,19 @@ public class User {
     @JoinColumn(name = "status_id", referencedColumnName = "id")
     private Status status;
 
-    @ManyToMany(mappedBy = "users", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private Set<Book> books = new HashSet<>();
+//    @ManyToMany(mappedBy = "users", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+//    private Set<Book> books = new HashSet<>();
 
-    public void addBook(Book book) {
-        this.books.add(book);
-        book.getUsers().add(this);
-    }
+    @OneToMany(mappedBy = "user")
+    private Set<UserBooks> userBooks;
 
-    public void removeBook(Book book) {
-        this.books.remove(book);
-        book.getUsers().remove(this);
-    }
+//    public void addBook(Book book) {
+//        this.books.add(book);
+//        book.getUsers().add(this);
+//    }
+//
+//    public void removeBook(Book book) {
+//        this.books.remove(book);
+//        book.getUsers().remove(this);
+//    }
 }

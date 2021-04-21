@@ -22,10 +22,10 @@ public class ServletTakeBook extends HttpServlet {
         int bookId = Integer.parseInt(request.getParameter("bookId"));
 
         ServiceUser userService = new ServiceUser();
-        User user = userService.addBookForUser(userId, bookId);
-        if (user != null) {
-            request.setAttribute("userBooks", userService.getUserBooksByUserId(userId));
-            getServletContext().getRequestDispatcher("/card").forward(request, response);
+        boolean check = userService.addBookForUser(userId, bookId);
+        if (check) {
+            request.setAttribute("userBooks", userService.getUserBooks());
+            getServletContext().getRequestDispatcher("/card.jsp").forward(request, response);
         } else {
             ServiceBook bookService = new ServiceBook();
             request.setAttribute("books", bookService.getAllBooks());

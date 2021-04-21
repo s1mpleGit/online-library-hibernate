@@ -20,8 +20,8 @@
         <property name="javax.persistence.jdbc.user" value="user"/>
         <property name="javax.persistence.jdbc.password" value="pass"/>
         <property name="javax.persistence.schema-generation.database.action" value="create"/>
-<!--        <property name="javax.persistence.schema-generation.create-script-source"-->
-<!--                  value="database/script/DDL-initialization.sql"/>-->
+        <property name="javax.persistence.schema-generation.create-script-source"
+                  value="database/script/DDL-initialization.sql"/>
         <property name="javax.persistence.sql-load-script-source"
                   value="database/script/DML-initialization.sql"/>
         <property name="hibernate.use_sql_comments" value="true"/>

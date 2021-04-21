@@ -15,8 +15,8 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@EqualsAndHashCode(exclude = {"author", "users"})
-@ToString(exclude = {"author", "users"})
+@EqualsAndHashCode(exclude = {"author", "userBooks"})
+@ToString(exclude = {"author", "userBooks"})
 
 @Entity
 @Table(name = "BOOKS")
@@ -29,13 +29,11 @@ public class Book {
     private String title;
     private String description;
     private String imageUri;
-    private LocalDate return_date;
 
-    public Book(String title, String description, String imageUri, LocalDate return_date) {
+    public Book(String title, String description, String imageUri) {
         this.title = title;
         this.description = description;
         this.imageUri = imageUri;
-        this.return_date = return_date;
     }
 
 //    @Fetch(FetchMode.JOIN)
@@ -44,20 +42,23 @@ public class Book {
     private Author author;
 
 //    @Fetch(FetchMode.JOIN)
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "user_books",
-    joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
-    private Set<User> users = new HashSet<>();
+//    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+//    @JoinTable(name = "user_books",
+//    joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
+//    inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
+//    private Set<User> users = new HashSet<>();
     /*delete cascades*/
-    public void addUser(User user) {
-        this.users.add(user);
-        user.getBooks().add(this);
-    }
+    @OneToMany(mappedBy = "book")
+    private Set<UserBooks> userBooks;
 
-    public void removeUser(User user) {
-        this.users.remove(user);
-        user.getBooks().remove(this);
-    }
+//    public void addUser(User user) {
+//        this.users.add(user);
+//        user.getBooks().add(this);
+//    }
+//
+//    public void removeUser(User user) {
+//        this.users.remove(user);
+//        user.getBooks().remove(this);
+//    }
 
 }

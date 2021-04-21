@@ -23,10 +23,11 @@ public class ServletBlockUser extends HttpServlet {
         ServiceUser userService = new ServiceUser();
         boolean check = userService.blockUserById(userId);
         if (check) {
-            ServiceAuthor authorService = new ServiceAuthor();
-            request.setAttribute("authors", authorService.getAllAuthors());
-            ServiceBook bookService = new ServiceBook();
-            request.setAttribute("books", bookService.getAllBooks());
+//            ServiceAuthor authorService = new ServiceAuthor();
+//            request.setAttribute("authors", authorService.getAllAuthors());
+//            ServiceBook bookService = new ServiceBook();
+//            request.setAttribute("books", bookService.getAllBooks());
+            request.setAttribute("userBooks", userService.getUserBooks());
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/card.jsp");
             PrintWriter out = response.getWriter();
             out.println("<font color=green>User successfully blocked</font>");

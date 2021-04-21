@@ -26,13 +26,6 @@ public class ServletLogin extends HttpServlet {
 
         ServiceUser userService = new ServiceUser();
         User user = userService.checkUserLoginPassword(login, password);
-//        ServiceRole roleService = new ServiceRole();
-//        ServiceStatus statusService = new ServiceStatus();
-
-//        Role roleUser = roleService.getRoleById(1);
-//        Role roleAdmin = roleService.getRoleById(2);
-//        Status statusActive = statusService.getStatusById(1);
-//        Status statusBlock = statusService.getStatusById(2);
 
         if (user != null && user.getRole().toString().contains("USER") && user.getStatus().toString().contains("ACTIVE")) {
             request.getSession().setAttribute("user", userService.getUserInfo(user.getId()));

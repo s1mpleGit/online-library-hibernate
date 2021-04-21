@@ -81,7 +81,7 @@
 </c:if>
 <c:if test="${sessionScope.user.role.toString() == 'ADMIN'}">
     <div class="text">
-        <h1>Overdue cards</h1>
+        <h1>Overdue books</h1>
     </div>
 </c:if>
 <br>
@@ -91,71 +91,65 @@
         <tr>
             <th></th>
             <th>Title</th>
-<%--            <th>Author</th>--%>
+            <th>Author</th>
             <th>Description</th>
-            <th>Date return</th>
+            <th>Return date</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${userBooks}" var="book">
-<%--            <c:if test="${}">--%>
+        <c:forEach items="${userBooks}" var="userBook">
+            <c:if test="${userBook.user.id == sessionScope.user.id}">
                 <tr>
-                    <td><img src="${book.imageUri}" alt="no image"></td>
-                    <td>${book.title}</td>
-<%--                    <td>${book.author.name}</td>--%>
-                    <td>${book.description}</td>
-                    <td>${book.return_date}</td>
+                    <td><img src="${userBook.book.imageUri}" alt="no image"></td>
+                    <td>${userBook.book.title}</td>
+                    <td>${userBook.book.author.name}</td>
+                    <td>${userBook.book.description}</td>
+                    <td>${userBook.return_date}</td>
                     <td>
                         <form action="<c:url value="/returnBook"/>" method="post">
-                            <input name="bookId" type="hidden" value="${book.id}">
-                            <input name="userId" type="hidden" value="${sessionScope.user.id}">
+                            <input name="userBookId" type="hidden" value="${userBook.id}">
+<%--                            <input name="userId" type="hidden" value="${sessionScope.user.id}">--%>
                             <input type="submit" value="Return book">
                         </form>
                     </td>
                 </tr>
-<%--            </c:if>--%>
+            </c:if>
         </c:forEach>
         </tbody>
     </table>
 </c:if>
 <br>
-<c:if test="${!empty books and sessionScope.user.role.toString() == 'ADMIN'}">
+<c:if test="${!empty userBooks and sessionScope.user.role.toString() == 'ADMIN'}">
     <table>
         <thead>
         <tr>
             <th></th>
             <th>Title</th>
             <th>Author</th>
-            <th>User ID</th>
+            <th>User email</th>
+            <th>User phone</th>
             <th>Date return</th>
             <th>Today</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${books}" var="book">
-            <c:if test="${book.return_date gt LocalDate.now()}">
+        <c:forEach items="${userBooks}" var="userBook">
+            <c:if test="${userBook.return_date gt LocalDate.now()}">
                 <tr>
-                    <td><img src="${book.imageUri}" alt="no image"></td>
-                    <td>${book.title}</td>
-                    <td>${book.author}</td>
-                    <td><c:forEach items="${users}" var="user">
-                        ${user.id}
-                        <form action="<c:url value="/blockUser"/>" method="post">
-                            <input name="userId" type="hidden" value="${user.id}">
-                            <input type="submit" value="Block user">
-                        </form>
-
-                    </c:forEach>
-                    </td>
-                    <td>${book.return_date}</td>
+                    <td><img src="${userBook.book.imageUri}" alt="no image"></td>
+                    <td>${userBook.book.title}</td>
+                    <td>${userBook.book.author.name}</td>
+                    <td>${userBook.user.email}</td>
+                    <td>${userBook.user.phone}</td>
+                    <td>${userBook.return_date}</td>
                     <td>${LocalDate.now()}</td>
                     <td>
-<%--                        <form action="<c:url value="/blockUser"/>" method="post">--%>
-<%--                            <input name="userId" type="hidden" value="${user.id}">--%>
-<%--                            <input type="submit" value="Block user">--%>
-<%--                        </form>--%>
+                        <form action="<c:url value="/blockUser"/>" method="post">
+                            <input name="userId" type="hidden" value="${userBook.user.id}">
+                            <input type="submit" value="Block user">
+                        </form>
                     </td>
                 </tr>
             </c:if>

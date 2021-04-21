@@ -1,13 +1,7 @@
 package library.service;
 
-import library.persistence.dao.DaoBook;
-import library.persistence.dao.DaoRole;
-import library.persistence.dao.DaoStatus;
-import library.persistence.dao.DaoUser;
-import library.persistence.model.Book;
-import library.persistence.model.Role;
-import library.persistence.model.Status;
-import library.persistence.model.User;
+import library.persistence.dao.*;
+import library.persistence.model.*;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -19,6 +13,7 @@ public class ServiceUser {
     private DaoUser userDao = new DaoUser();
     private DaoBook bookDao = new DaoBook();
     private DaoStatus statusDao = new DaoStatus();
+    private DaoUserBooks userBooksDao = new DaoUserBooks();
 
     public User checkUserLoginPassword(String login, String password) {
 
@@ -118,6 +113,7 @@ public class ServiceUser {
             Status status = statusDao.read(2);
             user.setStatus(status);
             userDao.update(user);
+            userDao.deleteBooksByUserId(id);
             return true;
         }
         throw new RuntimeException("Failed to block user with ID = " + id);
@@ -160,46 +156,32 @@ public class ServiceUser {
         throw new RuntimeException("Failed to delete user with ID = " + id);
     }
 
-    public User addBookForUser(int userId, int bookId) {
-        User user = userDao.read(userId);
-        Book book = bookDao.read(bookId);
-        Set<Book> books = user.getBooks();
+    public boolean addBookForUser(int userId, int bookId) {
 
-        long check = books.stream()
-                .filter(b -> b.equals(book))
+        List<UserBooks> userBooks = userBooksDao.readAll();
+
+        long check = userBooks.stream()
+                .filter(ub -> ub.getUser().getId() == userId && ub.getBook().getId() == bookId)
                 .count();
         if (check == 0) {
-            LocalDate date = LocalDate.now().plusWeeks(1);
-            book.setReturn_date(date);
-            user.addBook(book);
-//            book.addUser(user);
-            userDao.update(user);
-//            bookDao.update(book);
-            return user;
-        } else return null;
+            LocalDate date_return = LocalDate.now().plusWeeks(1);
+            userDao.saveBookForUser(userId, bookId, date_return);
+            return true;
+        } else return false;
     }
 
-    public User removeBookFromUser(int userId, int bookId) {
-        User user = userDao.read(userId);
-        Book book = bookDao.read(bookId);
-//        Set<Book> books = user.getBooks();
-//        long check = books.stream()
-//                .filter(b -> b.getId() == bookId)
-//                .count();
-//        if (check != 0) {
-//            user.removeBook(book);
-        book.removeUser(user);
-//            userDao.update(user);
-        bookDao.update(book);
-        return user;
-//        } else return null;
+    public boolean removeBookFromUser(int userBookId) {
+
+        if (userBookId > 0) {
+            userDao.deleteUserBookById(userBookId);
+            return true;
+        } else return false;
     }
 
-    public Set<Book> getUserBooksByUserId(int id) {
-        if (id > 0) {
-            User user = userDao.read(id);
-            return user.getBooks();
-        }
-        throw new RuntimeException("User with ID = " + id + " not exist");
+    public List<UserBooks> getUserBooks() {
+
+        DaoUserBooks userBooks = new DaoUserBooks();
+        return userBooks.readAll();
     }
+
 }

@@ -22,7 +22,7 @@ public class ServletUnblockUser extends HttpServlet {
         boolean check = userService.unblockUserById(userId);
         request.setAttribute("users", userService.showAllUsers());
         if (check) {
-            getServletContext().getRequestDispatcher("/block.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/blocked").forward(request, response);
         } else {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/block.jsp");
             PrintWriter out = response.getWriter();

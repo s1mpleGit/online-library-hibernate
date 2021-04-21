@@ -19,13 +19,12 @@ public class ServletReturnBook extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        int userId = Integer.parseInt(request.getParameter("userId"));
-        int bookId = Integer.parseInt(request.getParameter("bookId"));
+        int userBookId = Integer.parseInt(request.getParameter("userBookId"));
         ServiceUser userService = new ServiceUser();
-        User user = userService.removeBookFromUser(userId, bookId);
-        if (user != null) {
-            request.setAttribute("userBooks", userService.getUserBooksByUserId(userId));
-            getServletContext().getRequestDispatcher("/card").forward(request, response);
+        boolean check = userService.removeBookFromUser(userBookId);
+        if (check) {
+            request.setAttribute("userBooks", userService.getUserBooks());
+            getServletContext().getRequestDispatcher("/card.jsp").forward(request, response);
         } else {
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/card.jsp");
             PrintWriter out = response.getWriter();
