@@ -1,4 +1,3 @@
-<%--<%@ page import="library.service.ServiceRole" %>--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <html>
@@ -12,14 +11,23 @@
             background-attachment: fixed;
             background-repeat: no-repeat;
         }
+
         table {
             width: 100%;
         }
-        td, th {background: rgba(255, 255, 255, 0.5); color: black; text-align: center; border: black}
+
+        td, th {
+            background: rgba(255, 255, 255, 0.5);
+            color: black;
+            text-align: center;
+            border: black
+        }
+
         .btn {
             display: inline-block;
             float: right;
         }
+
         .fld {
             width: 100%;
             height: 50%;
@@ -28,6 +36,7 @@
             justify-content: center;
             text-align: center;
         }
+
         .text {
             text-align: center;
             background: rgba(255, 255, 255, 0.2);

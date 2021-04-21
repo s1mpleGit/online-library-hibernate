@@ -1,12 +1,13 @@
 package library.service;
 
 import library.persistence.dao.*;
-import library.persistence.model.*;
+import library.persistence.model.Role;
+import library.persistence.model.Status;
+import library.persistence.model.User;
+import library.persistence.model.UserBooks;
 
-import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 public class ServiceUser {
 

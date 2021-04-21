@@ -1,6 +1,5 @@
 package library.controller.servlet_book;
 
-import library.persistence.model.Author;
 import library.persistence.model.Book;
 import library.service.ServiceAuthor;
 

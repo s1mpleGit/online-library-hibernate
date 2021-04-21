@@ -19,7 +19,6 @@ public class ServletCreateAuthor extends HttpServlet {
         Author author = Author.builder()
                 .name(request.getParameter("author"))
                 .build();
-
         ServiceAuthor authorService = new ServiceAuthor();
         Author newAuthor = authorService.createAuthor2(author);
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/admin.jsp");

@@ -1,22 +1,13 @@
 package library.persistence.dao;
 
 import library.persistence.connector.JpaEntityManagerFactoryUtil;
-import library.persistence.model.Author;
-import library.persistence.model.Book;
-import library.persistence.model.Role;
 import library.persistence.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import java.sql.*;
+import java.sql.Date;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-import static java.sql.Statement.RETURN_GENERATED_KEYS;
-//import static library.persistence.connector.HikariCP.getConnection;
 
 public class DaoUser implements DaoInterface<User> {
 

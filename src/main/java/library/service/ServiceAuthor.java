@@ -2,9 +2,7 @@ package library.service;
 
 import library.persistence.dao.DaoAuthor;
 import library.persistence.model.Author;
-import library.persistence.model.User;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class ServiceAuthor {
@@ -14,20 +12,6 @@ public class ServiceAuthor {
     public List<Author> getAllAuthors() {
         return authorDao.readAll();
     }
-
-//    public Author createAuthor(Author author) {
-//
-//        String name = author.getName();
-//        if (name != null && !name.trim().isEmpty() && name.length() <= 20) {
-//            try {
-//                if (authorDao.check(author)) {
-//                    return authorDao.create(author);
-//                }
-//            } catch (SQLException throwable) {
-//                throwable.printStackTrace();
-//            }
-//        } return null;
-//    }
 
     public Author createAuthor2(Author author) {
 
@@ -40,7 +24,8 @@ public class ServiceAuthor {
             if (result == 0) {
                 return authorDao.create(author);
             }
-        } return null;
+        }
+        return null;
     }
 
     public Author getAuthorInfo(int id) {
@@ -48,7 +33,9 @@ public class ServiceAuthor {
             Author author = authorDao.read(id);
             if (author != null) {
                 return author;
-            } throw new RuntimeException("User with ID = " + id + " not exist");
-        } throw new RuntimeException("User with ID = " + id + " not exist");
+            }
+            throw new RuntimeException("User with ID = " + id + " not exist");
+        }
+        throw new RuntimeException("User with ID = " + id + " not exist");
     }
 }

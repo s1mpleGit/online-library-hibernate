@@ -27,7 +27,6 @@ public class ServletCreateBook extends HttpServlet {
                 .description(request.getParameter("description"))
                 .imageUri(request.getParameter("imageUri"))
                 .build();
-//        author.addBook(book);
         book.setAuthor(author);
         Book newBook = bookService.createBook(book);
         request.setAttribute("books", bookService.getAllBooks());

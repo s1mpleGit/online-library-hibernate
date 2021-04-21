@@ -2,7 +2,6 @@ package library.persistence.dao;
 
 import library.persistence.connector.JpaEntityManagerFactoryUtil;
 import library.persistence.model.Role;
-import library.persistence.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

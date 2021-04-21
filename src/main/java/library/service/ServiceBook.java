@@ -3,9 +3,7 @@ package library.service;
 import library.persistence.dao.DaoBook;
 import library.persistence.model.Author;
 import library.persistence.model.Book;
-import library.persistence.model.User;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class ServiceBook {
@@ -18,7 +16,6 @@ public class ServiceBook {
 
     public boolean deleteBook(int id) {
         if (id > 0) {
-
             bookDao.delete(id);
             return true;
         }
@@ -44,13 +41,9 @@ public class ServiceBook {
                     } else {
                         return null;
                     }
-                }
-                return null;
-            }
-            return null;
-        }
-        return null;
-
+                } return null;
+            } return null;
+        } return null;
     }
 
     public Book updateBook(Book book) {
@@ -65,12 +58,9 @@ public class ServiceBook {
             if (!title.trim().isEmpty() && !description.trim().isEmpty() && !imageUri.trim().isEmpty()) {
                 if (title.length() <= 20) {
                     return bookDao.update(book);
-                }
-                return null;
-            }
-            return null;
-        }
-        return null;
+                } return null;
+            } return null;
+        } return null;
     }
 
     public Book getBookInfo(int id) {
@@ -78,9 +68,8 @@ public class ServiceBook {
             Book book = bookDao.read(id);
             if (book != null) {
                 return book;
-            }
-            throw new RuntimeException("Book with ID = " + id + " not exist");
-        }
-        throw new RuntimeException("Book with ID = " + id + " not exist");
+            } throw new RuntimeException("Book with ID = " + id + " not exist");
+        } throw new RuntimeException("Book with ID = " + id + " not exist");
     }
+
 }

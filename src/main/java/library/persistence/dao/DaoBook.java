@@ -1,23 +1,11 @@
 package library.persistence.dao;
 
 import library.persistence.connector.JpaEntityManagerFactoryUtil;
-import library.persistence.model.Author;
 import library.persistence.model.Book;
-import library.persistence.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-import static java.sql.Statement.RETURN_GENERATED_KEYS;
-//import static library.persistence.connector.HikariCP.getConnection;
 
 public class DaoBook implements DaoInterface<Book> {
 
@@ -49,7 +37,7 @@ public class DaoBook implements DaoInterface<Book> {
         try {
             entityManager = entityManagerFactory.createEntityManager();
             book = entityManager.createQuery("from Book b left join fetch b.author where b.id = :id"
-                    ,Book.class)
+                    , Book.class)
                     .setParameter("id", id)
                     .getSingleResult();
         } catch (Exception e) {
@@ -112,7 +100,7 @@ public class DaoBook implements DaoInterface<Book> {
         try {
             entityManager = entityManagerFactory.createEntityManager();
             books = entityManager.createQuery("from Book b left join fetch b.author"
-                    ,Book.class)
+                    , Book.class)
                     .getResultList();
         } catch (Exception e) {
             e.printStackTrace();

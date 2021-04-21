@@ -11,10 +11,12 @@
             background-attachment: fixed;
             background-repeat: no-repeat;
         }
+
         .btn {
             display: inline-block;
             float: right;
         }
+
         .fld {
             width: 100%;
             height: 50%;
@@ -23,6 +25,7 @@
             justify-content: center;
             text-align: center;
         }
+
         .text {
             text-align: center;
             background: rgba(255, 255, 255, 0.2);
@@ -31,10 +34,10 @@
 </head>
 <header>
     <div class="btn">
-    <form action="<c:url value="/book" />" method="post">
-        <input type="submit" value="Show books"/>
-    </form>
-</div>
+        <form action="<c:url value="/book" />" method="post">
+            <input type="submit" value="Show books"/>
+        </form>
+    </div>
     <div class="btn">
         <form action="<c:url value="/registration.jsp" />" method="post">
             <input type="submit" value="Registration"/>
@@ -44,7 +47,7 @@
 <body>
 <br>
 <div class="text">
-<h1>Welcome to online library! Please log in or create account for using all features</h1>
+    <h1>Welcome to online library! Please log in or create account for using all features</h1>
 </div>
 <br>
 <div class="fld">

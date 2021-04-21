@@ -1,7 +1,5 @@
 package library.controller.servlet_user;
 
-import library.persistence.model.Status;
-import library.persistence.model.User;
 import library.service.ServiceUser;
 
 import javax.servlet.RequestDispatcher;

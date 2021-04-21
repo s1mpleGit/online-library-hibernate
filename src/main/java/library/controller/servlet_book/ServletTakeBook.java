@@ -1,6 +1,5 @@
 package library.controller.servlet_book;
 
-import library.persistence.model.User;
 import library.service.ServiceBook;
 import library.service.ServiceUser;
 

@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="text">
-<h1>Sorry, unexpected error on the server ¯\_(ツ)_/¯</h1>
+    <h1>Sorry, unexpected error on the server ¯\_(ツ)_/¯</h1>
 </div>
 </body>
 </html>

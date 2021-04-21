@@ -1,10 +1,6 @@
 package library.controller.servlet_util;
 
-import library.persistence.model.Role;
-import library.persistence.model.Status;
 import library.persistence.model.User;
-import library.service.ServiceRole;
-import library.service.ServiceStatus;
 import library.service.ServiceUser;
 
 import javax.servlet.RequestDispatcher;

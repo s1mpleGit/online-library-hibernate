@@ -1,8 +1,6 @@
 package library.controller.servlet_card;
 
 import library.persistence.model.User;
-import library.service.ServiceAuthor;
-import library.service.ServiceBook;
 import library.service.ServiceUser;
 
 import javax.servlet.ServletException;
@@ -26,16 +24,9 @@ public class ServletShowCard extends HttpServlet {
     private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = (User) request.getSession().getAttribute("user");
         if (user != null) {
-        ServiceUser userService = new ServiceUser();
-        request.setAttribute("userBooks", userService.getUserBooks());
-        if (user.getRole().toString().equalsIgnoreCase("ADMIN")) {
-//            ServiceBook bookService = new ServiceBook();
-//            request.setAttribute("books", bookService.getAllBooks());
-//            request.setAttribute("users", userService.showAllUsers());
-//            ServiceAuthor authorService = new ServiceAuthor();
-//            request.setAttribute("authors", authorService.getAllAuthors());
-        }
-        getServletContext().getRequestDispatcher("/card.jsp").forward(request, response);
+            ServiceUser userService = new ServiceUser();
+            request.setAttribute("userBooks", userService.getUserBooks());
+            getServletContext().getRequestDispatcher("/card.jsp").forward(request, response);
         } else {
             response.sendRedirect("/index.jsp");
         }

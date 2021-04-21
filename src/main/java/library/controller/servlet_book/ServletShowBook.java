@@ -29,8 +29,6 @@ public class ServletShowBook extends HttpServlet {
             if (user != null && user.getRole().toString().equalsIgnoreCase("ADMIN")) {
                 ServiceAuthor authorService = new ServiceAuthor();
                 request.setAttribute("authors", authorService.getAllAuthors());
-//                ServiceCard cardService = new ServiceCard();
-//                request.setAttribute("cards", cardService.getAllCards());
                 getServletContext().getRequestDispatcher("/book.jsp").forward(request, response);
             } else if (user != null && user.getStatus().toString().equalsIgnoreCase("BLOCK")) {
                 response.sendRedirect("/block.jsp");

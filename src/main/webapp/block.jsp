@@ -11,19 +11,29 @@
             background-attachment: fixed;
             background-repeat: no-repeat;
         }
+
         table {
             width: 100%;
         }
-        td, th {background: rgba(255, 255, 255, 0.5); color: black; text-align: center; border: black}
+
+        td, th {
+            background: rgba(255, 255, 255, 0.5);
+            color: black;
+            text-align: center;
+            border: black
+        }
+
         .text {
             text-align: center;
             color: #ff0000;
             background: rgba(255, 255, 255, 0.2);
         }
+
         .btn {
             display: inline-block;
             float: right;
         }
+
         .fld {
             width: 100%;
             height: 100%;
@@ -84,7 +94,8 @@
         <form action="<c:url value="/writeMessage" />" method="post">
             <input name="userId" type="hidden" value="${sessionScope.user.id}">
             <label for="message">
-                <textarea id="message" name="message" rows="5" cols="40" required placeholder="Type your message to admin"></textarea>
+                <textarea id="message" name="message" rows="5" cols="40" required
+                          placeholder="Type your message to admin"></textarea>
             </label> <br>
             <input class="text" type="submit" value="Send message"/>
         </form>

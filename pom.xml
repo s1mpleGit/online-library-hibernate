@@ -45,11 +45,6 @@
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.zaxxer</groupId>-->
-<!--            <artifactId>HikariCP</artifactId>-->
-<!--            <version>${hikari.version}</version>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>

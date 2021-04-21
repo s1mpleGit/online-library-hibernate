@@ -12,14 +12,23 @@
             background-attachment: fixed;
             background-repeat: no-repeat;
         }
+
         table {
             width: 100%;
         }
-        td, th {background: rgba(255, 255, 255, 0.5); color: black; text-align: center; border: black}
+
+        td, th {
+            background: rgba(255, 255, 255, 0.5);
+            color: black;
+            text-align: center;
+            border: black
+        }
+
         .btn {
             display: inline-block;
             float: right;
         }
+
         .text {
             text-align: center;
             background: rgba(255, 255, 255, 0.2);
@@ -75,9 +84,9 @@
 <body>
 <br>
 <c:if test="${sessionScope.user.role.toString() == 'USER'}">
-<div class="text">
-    <h1>Your books</h1>
-</div>
+    <div class="text">
+        <h1>Your books</h1>
+    </div>
 </c:if>
 <c:if test="${sessionScope.user.role.toString() == 'ADMIN'}">
     <div class="text">
@@ -109,7 +118,6 @@
                     <td>
                         <form action="<c:url value="/returnBook"/>" method="post">
                             <input name="userBookId" type="hidden" value="${userBook.id}">
-<%--                            <input name="userId" type="hidden" value="${sessionScope.user.id}">--%>
                             <input type="submit" value="Return book">
                         </form>
                     </td>

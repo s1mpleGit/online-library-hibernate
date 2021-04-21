@@ -1,6 +1,5 @@
 package library.controller.servlet_user;
 
-import library.service.ServiceBook;
 import library.service.ServiceUser;
 
 import javax.servlet.ServletException;

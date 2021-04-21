@@ -35,7 +35,6 @@ public class ServletUpdateBook extends HttpServlet {
                 .description(description)
                 .imageUri(imageUri)
                 .build();
-//        author.addBook(book);
         book.setAuthor(author);
         Book newBook = bookService.updateBook(book);
         request.setAttribute("books", bookService.getAllBooks());

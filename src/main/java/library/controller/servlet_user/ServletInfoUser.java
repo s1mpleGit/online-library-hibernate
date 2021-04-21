@@ -41,7 +41,6 @@ public class ServletInfoUser extends HttpServlet {
                 .email(newEmail)
                 .phone(newPhone)
                 .build();
-
         User newUser = userService.updateUserInfo(user);
         if (newUser != null) {
             request.getSession().setAttribute("user", userService.getUserInfo(id));
@@ -58,7 +57,6 @@ public class ServletInfoUser extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        response.sendRedirect("/user.jsp");
         getServletContext().getRequestDispatcher("/user.jsp").forward(request, response);
     }
 }

@@ -1,11 +1,8 @@
 package library.persistence.model;
 
 import lombok.*;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Data
@@ -30,7 +27,6 @@ public class Status {
     }
 
     @OneToMany(mappedBy = "status", orphanRemoval = true)
-//    @Fetch(FetchMode.JOIN)
     private Set<User> users;
 
     public User addUser(User user) {

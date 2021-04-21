@@ -11,10 +11,12 @@
             background-attachment: fixed;
             background-repeat: no-repeat;
         }
+
         .btn {
             display: inline-block;
             float: right;
         }
+
         .fld {
             width: 100%;
             height: 100%;
@@ -23,6 +25,7 @@
             justify-content: center;
             text-align: center;
         }
+
         .text {
             text-align: center;
             background: rgba(255, 255, 255, 0.2);

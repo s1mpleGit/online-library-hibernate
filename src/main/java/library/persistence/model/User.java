@@ -1,12 +1,8 @@
 package library.persistence.model;
 
 import lombok.*;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.Set;
 
 @Data
@@ -43,28 +39,14 @@ public class User {
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
-//    @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;
 
     @ManyToOne(fetch = FetchType.LAZY)
-//    @Fetch(FetchMode.JOIN)
     @JoinColumn(name = "status_id", referencedColumnName = "id")
     private Status status;
-
-//    @ManyToMany(mappedBy = "users", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-//    private Set<Book> books = new HashSet<>();
 
     @OneToMany(mappedBy = "user")
     private Set<UserBooks> userBooks;
 
-//    public void addBook(Book book) {
-//        this.books.add(book);
-//        book.getUsers().add(this);
-//    }
-//
-//    public void removeBook(Book book) {
-//        this.books.remove(book);
-//        book.getUsers().remove(this);
-//    }
 }
