@@ -144,7 +144,7 @@
         </thead>
         <tbody>
         <c:forEach items="${userBooks}" var="userBook">
-            <c:if test="${userBook.return_date gt LocalDate.now()}">
+            <c:if test="${userBook.return_date lt LocalDate.now()}">
                 <tr>
                     <td><img src="${userBook.book.imageUri}" alt="no image"></td>
                     <td>${userBook.book.title}</td>

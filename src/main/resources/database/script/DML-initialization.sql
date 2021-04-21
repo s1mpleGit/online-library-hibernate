@@ -26,3 +26,6 @@ INSERT INTO BOOKS (title, author_id, description, imageUri) VALUES ('Clean Code 
 INSERT INTO USERS (login, password, name, surname, email, phone, role_id, status_id) VALUES ('admin', 'admin', 'admin_name', 'admin_surname', 'admin@admin.by', '375291231231', 2, 1);
 INSERT INTO USERS (login, password, name, surname, email, phone, role_id, status_id) VALUES ('user', 'user', 'user_name', 'user_surname','user@user.by', '375299879879', 1, 1);
 INSERT INTO USERS (login, password, name, surname, email, phone, role_id, status_id) VALUES ('smp', 'smp', 'alherd', 'nestsiarkow', 's1mple@tut.by', '375255274953', 1, 2);
+
+INSERT INTO USER_BOOKS (USER_ID, BOOK_ID, RETURN_DATE) VALUES (2, 1,'2021-01-01');
+INSERT INTO USER_BOOKS (USER_ID, BOOK_ID, RETURN_DATE) VALUES (2, 2,'2021-01-01');
