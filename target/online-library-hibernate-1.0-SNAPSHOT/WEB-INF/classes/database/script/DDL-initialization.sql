@@ -1,6 +1,0 @@
-CREATE TABLE ROLES(id int not null auto_increment, role varchar(20), PRIMARY KEY (id));
-CREATE TABLE STATUSES(id int not null auto_increment, status varchar(30), PRIMARY KEY (id));
-CREATE TABLE USERS(id int not null auto_increment,login varchar(20) NOT NULL, password varchar(20) NOT NULL, name varchar(20) NOT NULL, surname varchar(20) NOT NULL, email varchar(30) NOT NULL, phone varchar(12) NOT NULL, role_id varchar(10) NOT NULL, status_id varchar(10) NOT NULL, message CLOB,PRIMARY KEY (id));
-CREATE TABLE AUTHORS(id int not null auto_increment, name varchar(50) NOT NULL, PRIMARY KEY (id));
-CREATE TABLE BOOKS(id int not null auto_increment, title varchar(100) NOT NULL, author_id int NOT NULL, description CLOB NOT NULL, imageUri CLOB NOT NULL, PRIMARY KEY (id), FOREIGN KEY (author_id) REFERENCES AUTHORS (id));
-CREATE TABLE USER_BOOKS(id int auto_increment, user_id int, book_id int, return_date date, PRIMARY KEY (id), FOREIGN KEY (user_id) REFERENCES USERS (id), FOREIGN KEY (book_id) REFERENCES BOOKS (id));
