@@ -14,7 +14,7 @@ public class ServiceUser {
     private DaoUser userDao = new DaoUser();
     private DaoBook bookDao = new DaoBook();
     private DaoStatus statusDao = new DaoStatus();
-    private DaoUserBooks userBooksDao = new DaoUserBooks();
+    private DaoUserBook userBooksDao = new DaoUserBook();
 
     public User checkUserLoginPassword(String login, String password) {
 
@@ -181,7 +181,7 @@ public class ServiceUser {
 
     public List<UserBooks> getUserBooks() {
 
-        DaoUserBooks userBooks = new DaoUserBooks();
+        DaoUserBook userBooks = new DaoUserBook();
         return userBooks.readAll();
     }
 
